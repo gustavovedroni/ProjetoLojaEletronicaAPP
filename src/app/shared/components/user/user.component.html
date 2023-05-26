@@ -1,1 +1,25 @@
-<p>user works!</p>
+
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+		<div class="signup">
+			<form>
+				<label for="chk" aria-hidden="true">Sign up</label>
+				<input type="text" placeholder="User name" id="logincad">
+				<input type="password" placeholder="Password" id="senhacad">
+				<button (click)="cadastrar()">Sign up</button>
+			</form>
+		</div>
+
+		<div class="login">
+			<form>
+				<label for="chk" aria-hidden="true">Login</label>
+				<input type="text" placeholder="Login" id="login">
+				<input type="password" placeholder="Password" id="senha">
+				<button (click)="logar()">Login</button>
+			</form>
+		</div>
+	</div>
+</body>
+

@@ -28,7 +28,7 @@ export class CategoryComponent {
     try {
       await this.categoryService.createCategory(this.form.value).subscribe(res => {
         console.log('Product created successfully!');
-        this.router.navigate(['/home'])
+        this.router.navigate(['/cadastrar'])
       });
 
     } catch (error) {

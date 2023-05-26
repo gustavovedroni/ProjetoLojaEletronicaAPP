@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './shared/components/product/product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFilter } from './shared/components/product/custom.filter';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
