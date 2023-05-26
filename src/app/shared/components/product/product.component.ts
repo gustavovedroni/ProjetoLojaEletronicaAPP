@@ -96,6 +96,7 @@ export class ProductComponent implements OnInit {
       this.refreshObj();
     } catch (error) {
       console.log('Error:', error);
+      this.refreshObj();
     }
   }
   
@@ -127,4 +128,19 @@ export class ProductComponent implements OnInit {
     this.updateProduct(this.selectedProductId, updatedProduct);
     this.closeEditModal();
   }
+
+  deleteProduct(id: number) {
+    this.productService.deleteProduct(id).subscribe(
+      () => {
+        console.log('Produto deletado com sucesso!');
+        this.refreshObj();
+      },
+      (error) => {
+        console.log('Erro ao deletar o produto:', error);
+        this.refreshObj();
+      }
+    );
+    this.refreshObj();
+  }
+  
 }
