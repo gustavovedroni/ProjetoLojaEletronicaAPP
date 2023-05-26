@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductComponent } from './shared/components/product/product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomFilter } from './shared/components/product/custom.filter';
 
 
 @NgModule({
@@ -23,14 +24,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserComponent,
     CategoryComponent,
     OrderComponent,
-    NavBarComponent
+    NavBarComponent,
+    CustomFilter
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

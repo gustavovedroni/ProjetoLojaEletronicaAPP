@@ -14,6 +14,8 @@
   <div class="container mt-3">
     <div class="card">
       <div class="card-body">
+        <label>Pesquisar</label>
+        <input class="form-control me-sm-2" type="search" placeholder="Pesquisar produto " [(ngModel)]="term">
         <form [formGroup]="form">
           <div class="row mt-3">
             <div class="col-md-6">
@@ -25,18 +27,18 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="preco">Preço:</label>
-                <input type="text" class="form-control" id="preco" placeholder="Digite o preço do produto"
-                  formControlName="price">
-              </div>
+                <label for="descricao">Descrição:</label>
+                <input class="form-control" id="descricao" placeholder="Digite a descrição do produto"
+                  formControlName="description">
+              </div>             
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <input class="form-control" id="descricao" placeholder="Digite a descrição do produto"
-                  formControlName="description">
+                <label for="preco">Preço:</label>
+                <input type="text" class="form-control" id="preco" placeholder="Digite o preço do produto"
+                  formControlName="price">
               </div>
             </div>
             <div class="col-md-6">
@@ -83,12 +85,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="table-primary" *ngFor="let product of products">
+        <tr class="table-primary" *ngFor="let product of products | customFilter: term">
           <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.price }}</td>
           <td>
-            <img [src]="product.imgUrl" alt="Imagem do produto" width="50" height="50">
+            <ng-container *ngIf="product.imgUrl">
+              <img [src]="product.imgUrl" alt="Imagem do Produto" style="height: 50px" (error)="handleImageError($event)">
+            </ng-container>
+            <ng-container *ngIf="!product.imgUrl">
+              <span>Nenhuma imagem disponível</span>
+            </ng-container>
           </td>
           <td>
             <button type="button" class="btn btn-primary" (click)="openEditModal(product.id)">

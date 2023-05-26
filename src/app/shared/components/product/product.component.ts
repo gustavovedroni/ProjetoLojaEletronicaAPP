@@ -13,6 +13,7 @@ import { Category } from 'src/app/models/category.model';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  public term: string = '';
   products: Product[] = [];
   categories: Category[] = [];
   form: FormGroup;
@@ -37,15 +38,13 @@ export class ProductComponent implements OnInit {
       description: ['', Validators.compose([
         Validators.required
       ])],
-      imgUrl: ['', Validators.compose([
-        Validators.required
-      ])]
+      imgUrl: ['', Validators.compose([])]
     });
     this.editForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
       description: ['', Validators.required],
-      imgUrl: ['', Validators.required]
+      imgUrl: ['']
     });
     this.selectedProductId = 0;
   }
@@ -86,6 +85,7 @@ export class ProductComponent implements OnInit {
 
     } catch (error) {
       console.log('Error:', error);
+      this.refreshObj();
     }
   }
 
@@ -121,6 +121,7 @@ export class ProductComponent implements OnInit {
 
   closeEditModal() {
     this.modalService.dismissAll();
+    this.refreshObj();
   }
 
   submitEditForm() {
@@ -143,4 +144,7 @@ export class ProductComponent implements OnInit {
     this.refreshObj();
   }
   
+  handleImageError(event: any) {
+    event.target.src = 'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_1280.png';
+  }
 }
