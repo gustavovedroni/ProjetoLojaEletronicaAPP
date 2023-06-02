@@ -34,7 +34,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

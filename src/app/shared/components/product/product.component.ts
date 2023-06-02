@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryService } from '../category/category.service';
 import { Category } from 'src/app/models/category.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -26,7 +27,8 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([
@@ -52,6 +54,14 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.getAllProducts();
     this.getAllCategories();
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['/home']);
+    }
+  }
+
+  sair() {
+    localStorage.removeItem('token')
+    this.router.navigate(['/home']);
   }
 
   getAllProducts() {

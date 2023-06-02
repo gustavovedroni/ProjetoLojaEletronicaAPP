@@ -1,0 +1,20 @@
+.usuarioLogado2 {
+    position: fixed;
+    right: 0px;
+    top: 35px;
+    left: 1800px;
+    width: 5%;
+    font-size: 12px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #2ecc71;
+    padding: 4px;
+    z-index: 9999;
+  }
+  @media(max-width:1897px){
+      .usuarioLogado2 {
+          top: 35px;
+          left: calc(100vw - 100px)
+      }
+  }

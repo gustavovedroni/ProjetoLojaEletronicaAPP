@@ -1,25 +1,25 @@
+<script>
+  window.onload = function () {
+    var usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    if (usuarioLogado) {
 
-<body>
-	<div class="main">  	
-		<input type="checkbox" id="chk" aria-hidden="true">
+      document.getElementById('usuarioLogado').textContent = usuarioLogado.login;
+    }
+  };
+  if (localStorage.getItem('token') == null) {
+    this.router.navigate(['/cadastro']);
+  }
+</script>
 
-		<div class="signup">
-			<form>
-				<label for="chk" aria-hidden="true">Sign up</label>
-				<input type="text" placeholder="User name" id="logincad">
-				<input type="password" placeholder="Password" id="senhacad">
-				<button (click)="cadastrar()">Sign up</button>
-			</form>
-		</div>
-
-		<div class="login">
-			<form>
-				<label for="chk" aria-hidden="true">Login</label>
-				<input type="text" placeholder="Login" id="login">
-				<input type="password" placeholder="Password" id="senha">
-				<button (click)="logar()">Login</button>
-			</form>
-		</div>
-	</div>
-</body>
-
+<div>
+	<label for="email">Email:</label>
+	<input type="email" id="email" [(ngModel)]="email" name="email">
+  </div>
+  
+  <div>
+	<label for="password">Senha:</label>
+	<input type="password" id="password" [(ngModel)]="password" name="password">
+  </div>
+  
+  <button (click)="login()">Entrar</button>
+  
